@@ -26,8 +26,10 @@ install_packages()
 
     # Install desired packages
      report_status "Installing packages..."
-     sudo pacman -S ${PKGLIST}
-     $AURCLIENT build ${AURLIST}
+     sudo pacman -Sy ${PKGLIST}
+     #$AURCLIENT build
+     yay --needed -Sy ${AURLIST}
+
 }
 
 # Step 2: Create python virtual environment
