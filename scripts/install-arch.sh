@@ -11,7 +11,7 @@ KLIPPER_GROUP=$KLIPPER_USER
 install_packages()
 {
     # Packages for python cffi
-    PKGLIST="python2-virtualenv libffi base-devel"
+    PKGLIST="python2-virtualenv libffi base-devel python-pyyaml"
     # kconfig requirements
     PKGLIST="${PKGLIST} ncurses"
     # hub-ctrl
@@ -20,8 +20,9 @@ install_packages()
     PKGLIST="${PKGLIST} avrdude avr-gcc avr-binutils avr-libc"
     # ARM chip installation and building
     AURLIST="stm32flash"
-    PKGLIST="${PKGLIST} arm-none-eabi-newlib"
-    PKGLIST="${PKGLIST} arm-none-eabi-gcc arm-none-eabi-binutils"
+    #Optional not instaled
+    #PKGLIST="${PKGLIST} arm-none-eabi-newlib"
+    #PKGLIST="${PKGLIST} arm-none-eabi-gcc arm-none-eabi-binutils"
 
     # Install desired packages
      report_status "Installing packages..."
@@ -38,7 +39,7 @@ create_virtualenv()
     [ ! -d ${PYTHONDIR} ] && virtualenv2 ${PYTHONDIR}
 
     # Install/update dependencies
-    ${PYTHONDIR}/bin/pip install -r ${SRCDIR}/scripts/klippy-requirements.txt
+    ${PYTHONDIR}/bin/pip install -r ${SRCDIR}/scripts/klippy-requirements-arch.txt
 }
 
 # Step 3: Install startup script
